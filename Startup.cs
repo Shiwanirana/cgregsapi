@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using cgregsapi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,7 +27,10 @@ namespace cgregsapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //NOTE Add the Services here otherwise a lot of errors will pop up..
+            services.AddTransient<CarsService>();
+            services.AddTransient<HomesService>();
+            services.AddTransient<JobsService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
